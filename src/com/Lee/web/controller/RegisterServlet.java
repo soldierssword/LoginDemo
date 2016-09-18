@@ -1,6 +1,7 @@
 package com.Lee.web.controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,6 +28,8 @@ public class RegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		req.setCharacterEncoding("UTF-8");
+		
 		String username = req.getParameter("username");
 		String password=req.getParameter("password");
 		User user=new User(username,password);
@@ -39,6 +42,7 @@ public class RegisterServlet extends HttpServlet {
 			dispatcher.forward(req, resp);
 			return;
 		}
+		
 		req.getSession().setAttribute("msg",username+"×¢²á³É¹¦");
 		RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/success.jsp");
 		dispatcher.forward(req, resp);
